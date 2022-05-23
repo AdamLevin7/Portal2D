@@ -65,11 +65,11 @@ public class Wall{
 		//these are the 2 lines of code needed draw an image on the screen
 		Graphics2D g2 = (Graphics2D) g;
 
-		//call update to update the actualy picture location
+		//call update to update the actually picture location
 		Color c=new Color(180, 180, 180);
 		g2.setColor(c);
 		if(exist)
-		g2.fillRect(topX, topY, bx-topX, by-topY);
+			g2.fillRect(topX, topY, bx-topX, by-topY);
 
 
 

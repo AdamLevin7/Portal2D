@@ -19,8 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener, MouseMotionListener {
-
-	Player p=new Player(69, 69);
+	Player p = new Player(69, 69);
 	Button b = new Button(450, 380, 3);
 	private int p1x=9001;
 	private int p1y=9001;
@@ -61,18 +60,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	Enemy e3=new Enemy(700, 350, 500);
 	Crosshair c = new Crosshair();
 	Cube c1=new Cube(350, 80);
+	Level level = new Level(1);
+	//Walls are built as barriers to make the game more difficult. Players need to jump over the wall as well as defeat other players
+	ArrayList<Wall> walls= level.getWalls();
+	ArrayList<Laser> lasers=new ArrayList<>(); //different lasers 
+	ArrayList<Shot> s=new ArrayList<>(); //what is this for --- I'm not sure?
 
-	ArrayList<Wall> walls=new ArrayList<>(); {
-		walls.add(new Wall(200, 400, 1000, 500, true, 0));
-		walls.add(new Wall(0, 200, 250, 400, true, 1));
-		walls.add(new Wall(500, 200, 1000, 400, true, 2));
-		walls.add(new Wall(600, 0, 650, 400, false, 3));
-		walls.add(new Wall(0, 0, 2000, 10, false, 3));
-	}
-	ArrayList<Laser> lasers=new ArrayList<>();
-	ArrayList<Shot> s=new ArrayList<>();
-
-
+	//This method paints the screen elements
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		b.paint(g);
@@ -362,7 +356,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 		}
 	}
-
+//This method is where the action of the game occurs 
 	public void shootPortal(Wall w, Graphics g) {
 		if(s.size()!=0) {
 			if(collision((int)s.get(0).getX(), (int)s.get(0).getY(), (int)s.get(0).getX(), (int)s.get(0).getY(), w)) {
@@ -599,6 +593,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			}
 		}
 	}
+	//The walls are all barriers as stated in an above comment 
 	public void updateCollision(int TopLeftX, int TopLeftY, int BotRightX, int BotRightY, Wall w) {
 
 		//update the player's location and status based on a certain wall
@@ -731,6 +726,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		p2x = 9001;
 		p2y = 9001;
 		p.setVY(0);
+		level.reset();
+		walls = level.getWalls();
 	}
 	public static void main(String[] arg) {
 		Frame f = new Frame();

@@ -58,7 +58,7 @@ public class Button {
 		Graphics2D g2 = (Graphics2D) g;
 		
 		
-		//call update to update the actualy picture location
+		//call update to update the actually picture location
 		update();
 		
 		
