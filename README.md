@@ -83,3 +83,6 @@ These methods check collision between the two objects listed in the parameters
 <img width="532" alt="image" src="https://user-images.githubusercontent.com/90798634/171296964-6078ba36-fb8b-448f-a990-a206f0405c11.png">
 
 Key released method
+
+Level Manager is the class that "manages" the different levels. It is basically a layer between levels and the frame. 
+The individual levels are also classes, which have code that tells the computer what to do on each level. 
